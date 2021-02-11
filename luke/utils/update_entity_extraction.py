@@ -20,6 +20,7 @@ Entity = namedtuple("Entity", ["title", "language"])
 
 _dump_db = None  # global variable used in multiprocessing workers
 
+
 @click.command()
 @click.argument("dump_db_file", type=click.Path())
 @click.argument("out_file", type=click.Path())
@@ -31,10 +32,10 @@ _dump_db = None  # global variable used in multiprocessing workers
 def build_entity_vocab_custom(dump_db_file: str, white_list: List[TextIO], **kwargs):
     dump_db = DumpDB(dump_db_file)
     white_list = [line.rstrip() for f in white_list for line in f]
-    EntityVocab.build(dump_db, white_list=white_list, language=dump_db.language, **kwargs)
+    EntityVocabCustom.build(dump_db, white_list=white_list, language=dump_db.language, **kwargs)
 
 
-class EntityVocab(object):
+class EntityVocabCustom(object):
     def __init__(self, vocab_file: str):
         self._vocab_file = vocab_file
 
@@ -124,10 +125,24 @@ class EntityVocab(object):
         chunk_size: int,
         language: str,
     ):
+
+        for title in dump_db.titles():
+            title = 'India'
+            for paragraph in dump_db.get_paragraphs(title):
+                # print(paragraph)
+                print(paragraph.text)
+                # for wiki_link in paragraph.wiki_links:
+                #     print(wiki_link)
+                #     title_link = dump_db.resolve_redirect(wiki_link.title)
+                #     if not (':' in title_link):
+                #         print(title_link)
+                #         print(dump_db.get_paragraphs(title_link))
+            exit()
+
         counter = Counter()
         with tqdm(total=dump_db.page_size(), mininterval=0.5) as pbar:
-            with closing(Pool(pool_size, initializer=EntityVocab._initialize_worker, initargs=(dump_db,))) as pool:
-                for ret in pool.imap_unordered(EntityVocab._count_entities, dump_db.titles(), chunksize=chunk_size):
+            with closing(Pool(pool_size, initializer=EntityVocabCustom._initialize_worker, initargs=(dump_db,))) as pool:
+                for ret in pool.imap_unordered(EntityVocabCustom._count_entities, dump_db.titles(), chunksize=chunk_size):
                     counter.update(ret)
                     pbar.update()
 
@@ -136,21 +151,23 @@ class EntityVocab(object):
         title_dict[UNK_TOKEN] = 0
         title_dict[MASK_TOKEN] = 0
 
-        for title in white_list:
-            if counter[title] != 0:
-                title_dict[title] = counter[title]
+        for title_link in white_list:
+            if counter[title_link] != 0:
+                title_dict[title_link] = counter[title_link]
 
         if not white_list_only:
             valid_titles = frozenset(dump_db.titles())
-            for title, count in counter.most_common():
-                if title in valid_titles and not title.startswith("Category:"):
-                    title_dict[title] = count
+            for title_link, count in counter.most_common():
+                print(title_link)
+                exit()
+                if title_link in valid_titles and not title_link.startswith("Category:"):
+                    title_dict[title_link] = count
                     if len(title_dict) == vocab_size:
                         break
 
         with open(out_file, "w") as f:
-            for ent_id, (title, count) in enumerate(title_dict.items()):
-                json.dump({"id": ent_id, "entities": [[title, language]], "count": count}, f)
+            for ent_id, (title_link, count) in enumerate(title_dict.items()):
+                json.dump({"id": ent_id, "entities": [[title_link, language]], "count": count}, f)
                 f.write("\n")
 
     @staticmethod

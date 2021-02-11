@@ -22,6 +22,7 @@ import luke.pretraining.train
 import luke.utils.entity_vocab
 import luke.utils.interwiki_db
 import luke.utils.model_utils
+import luke.utils.update_entity_extraction
 
 
 @click.group()
@@ -54,7 +55,7 @@ def build_dump_db(dump_file: str, out_file: str, **kwargs):
 
 
 cli.add_command(luke.utils.entity_vocab.build_entity_vocab)
-cli.add_command(luke.utils)
+cli.add_command(luke.utils.update_entity_extraction.build_entity_vocab_custom)
 cli.add_command(luke.pretraining.dataset.build_wikipedia_pretraining_dataset)
 cli.add_command(luke.pretraining.train.pretrain)
 cli.add_command(luke.pretraining.train.resume_pretraining)
