@@ -54,6 +54,7 @@ def build_dump_db(dump_file: str, out_file: str, **kwargs):
 
 
 cli.add_command(luke.utils.entity_vocab.build_entity_vocab)
+cli.add_command(luke.utils)
 cli.add_command(luke.pretraining.dataset.build_wikipedia_pretraining_dataset)
 cli.add_command(luke.pretraining.train.pretrain)
 cli.add_command(luke.pretraining.train.resume_pretraining)
