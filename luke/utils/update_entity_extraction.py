@@ -125,11 +125,18 @@ class EntityVocabCustom(object):
             language: str,
     ):
         counter = Counter()
+        # count = 0
         with tqdm(total=dump_db.page_size(), mininterval=0.5) as pbar:
             with closing(
                     Pool(pool_size, initializer=EntityVocabCustom._initialize_worker, initargs=(dump_db,))) as pool:
                 for ret in pool.imap_unordered(EntityVocabCustom._count_entities, dump_db.titles(),
                                                chunksize=chunk_size):
+                    # count += 1
+                    # print(count)
+                    # if count == 10:
+                    #     pool.terminate()
+                    #     pool.join()
+                    #     break
                     counter.update(ret)
                     pbar.update()
 
@@ -153,11 +160,11 @@ class EntityVocabCustom(object):
         with open(out_file, "w") as f:
             for ent_id, (title_link, count) in enumerate(title_dict.items()):
                 info_box = {}
-                if '#' not in title_link and ':' not in title_link:
+                if '#' not in title_link and ':' not in title_link and count != 0:
                     info_box = dump_db.get_infobox(title_link)
 
                 json.dump({"id": ent_id, "entities": [[title_link, language]],
-                           "count": count, "info_box": info_box}, f)
+                           "count": count, "info_box": info_box}, f, default=str)
                 f.write("\n")
 
     @staticmethod
