@@ -124,18 +124,6 @@ class EntityVocabCustom(object):
             chunk_size: int,
             language: str,
     ):
-
-        for title in dump_db.titles():
-            title = 'India'
-            for paragraph in dump_db.get_paragraphs(title):
-                for wiki_link in paragraph.wiki_links:
-                    print(wiki_link)
-                    title_link = dump_db.resolve_redirect(wiki_link.title)
-                    print(title_link)
-                    if '#' not in title_link and ':' not in title_link:
-                        infoxbox = dump_db.get_infobox(title_link)
-                        print(infoxbox)
-        exit()
         counter = Counter()
         with tqdm(total=dump_db.page_size(), mininterval=0.5) as pbar:
             with closing(
@@ -157,8 +145,6 @@ class EntityVocabCustom(object):
         if not white_list_only:
             valid_titles = frozenset(dump_db.titles())
             for title_link, count in counter.most_common():
-                print(title_link)
-                exit()
                 if title_link in valid_titles and not title_link.startswith("Category:"):
                     title_dict[title_link] = count
                     if len(title_dict) == vocab_size:
@@ -166,7 +152,12 @@ class EntityVocabCustom(object):
 
         with open(out_file, "w") as f:
             for ent_id, (title_link, count) in enumerate(title_dict.items()):
-                json.dump({"id": ent_id, "entities": [[title_link, language]], "count": count}, f)
+                info_box = {}
+                if '#' not in title_link and ':' not in title_link:
+                    info_box = _dump_db.get_infobox(title_link)
+
+                json.dump({"id": ent_id, "entities": [[title_link, language]],
+                           "count": count, "info_box": info_box}, f)
                 f.write("\n")
 
     @staticmethod
