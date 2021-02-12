@@ -154,7 +154,7 @@ class EntityVocabCustom(object):
             for ent_id, (title_link, count) in enumerate(title_dict.items()):
                 info_box = {}
                 if '#' not in title_link and ':' not in title_link:
-                    info_box = _dump_db.get_infobox(title_link)
+                    info_box = dump_db.get_infobox(title_link)
 
                 json.dump({"id": ent_id, "entities": [[title_link, language]],
                            "count": count, "info_box": info_box}, f)
