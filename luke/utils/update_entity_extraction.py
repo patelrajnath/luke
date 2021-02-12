@@ -9,7 +9,6 @@ import click
 from tqdm import tqdm
 from wikipedia2vec.dump_db import DumpDB
 
-
 PAD_TOKEN = "[PAD]"
 UNK_TOKEN = "[UNK]"
 MASK_TOKEN = "[MASK]"
@@ -116,33 +115,33 @@ class EntityVocabCustom(object):
 
     @staticmethod
     def build(
-        dump_db: DumpDB,
-        out_file: str,
-        vocab_size: int,
-        white_list: List[str],
-        white_list_only: bool,
-        pool_size: int,
-        chunk_size: int,
-        language: str,
+            dump_db: DumpDB,
+            out_file: str,
+            vocab_size: int,
+            white_list: List[str],
+            white_list_only: bool,
+            pool_size: int,
+            chunk_size: int,
+            language: str,
     ):
 
         for title in dump_db.titles():
             title = 'India'
             for paragraph in dump_db.get_paragraphs(title):
-                # print(paragraph)
-                print(paragraph.text)
-                # for wiki_link in paragraph.wiki_links:
-                #     print(wiki_link)
-                #     title_link = dump_db.resolve_redirect(wiki_link.title)
-                #     if not (':' in title_link):
-                #         print(title_link)
-                #         print(dump_db.get_paragraphs(title_link))
-            exit()
-
+                for wiki_link in paragraph.wiki_links:
+                    print(wiki_link)
+                    title_link = dump_db.resolve_redirect(wiki_link.title)
+                    print(title_link)
+                    if '#' not in title_link and ':' not in title_link:
+                        infoxbox = dump_db.get_infobox(title_link)
+                        print(infoxbox)
+        exit()
         counter = Counter()
         with tqdm(total=dump_db.page_size(), mininterval=0.5) as pbar:
-            with closing(Pool(pool_size, initializer=EntityVocabCustom._initialize_worker, initargs=(dump_db,))) as pool:
-                for ret in pool.imap_unordered(EntityVocabCustom._count_entities, dump_db.titles(), chunksize=chunk_size):
+            with closing(
+                    Pool(pool_size, initializer=EntityVocabCustom._initialize_worker, initargs=(dump_db,))) as pool:
+                for ret in pool.imap_unordered(EntityVocabCustom._count_entities, dump_db.titles(),
+                                               chunksize=chunk_size):
                     counter.update(ret)
                     pbar.update()
 
