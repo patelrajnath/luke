@@ -99,12 +99,14 @@ class LukeModel(nn.Module):
         entity_position_ids: torch.LongTensor = None,
         entity_segment_ids: torch.LongTensor = None,
         entity_attention_mask: torch.LongTensor = None,
+        vm: torch.LongTensor = None,
     ):
         word_seq_size = word_ids.size(1)
 
         embedding_output = self.embeddings(word_ids, word_segment_ids)
 
-        attention_mask = self._compute_extended_attention_mask(word_attention_mask, entity_attention_mask)
+        attention_mask = self._compute_extended_attention_mask(word_attention_mask, entity_attention_mask, vm)
+
         if entity_ids is not None:
             entity_embedding_output = self.entity_embeddings(entity_ids, entity_position_ids, entity_segment_ids)
             embedding_output = torch.cat([embedding_output, entity_embedding_output], dim=1)
@@ -178,16 +180,22 @@ class LukeModel(nn.Module):
             )
 
     def _compute_extended_attention_mask(
-        self, word_attention_mask: torch.LongTensor, entity_attention_mask: torch.LongTensor
-    ):
-        attention_mask = word_attention_mask
-        if entity_attention_mask is not None:
-            attention_mask = torch.cat([attention_mask, entity_attention_mask], dim=1)
-        extended_attention_mask = attention_mask.unsqueeze(1).unsqueeze(2)
-        extended_attention_mask = extended_attention_mask.to(dtype=next(self.parameters()).dtype)
-        extended_attention_mask = (1.0 - extended_attention_mask) * -10000.0
-
-        return extended_attention_mask
+        self, word_attention_mask: torch.LongTensor,
+            entity_attention_mask: torch.LongTensor,
+            vm: torch.LongTensor):
+        if vm is None:
+            attention_mask = word_attention_mask
+            if entity_attention_mask is not None:
+                attention_mask = torch.cat([attention_mask, entity_attention_mask], dim=1)
+            extended_attention_mask = attention_mask.unsqueeze(1).unsqueeze(2)
+            extended_attention_mask = extended_attention_mask.to(dtype=next(self.parameters()).dtype)
+            extended_attention_mask = (1.0 - extended_attention_mask) * -10000.0
+            return extended_attention_mask
+        else:
+            mask = vm.unsqueeze(1)
+            mask = mask.float()
+            mask = (1.0 - mask) * -10000.0
+            return mask
 
 
 class LukeEntityAwareAttentionModel(LukeModel):
