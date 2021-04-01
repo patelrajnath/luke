@@ -26,6 +26,7 @@ _dump_db = None  # global variable used in multiprocessing workers
 @click.option("--vocab-size", default=1000000)
 @click.option("-w", "--white-list", type=click.File(), multiple=True)
 @click.option("--white-list-only", is_flag=True)
+@click.option("--include-all", is_flag=True)
 @click.option("--pool-size", default=multiprocessing.cpu_count())
 @click.option("--chunk-size", default=100)
 def build_entity_vocab_custom(dump_db_file: str, white_list: List[TextIO], **kwargs):
@@ -120,6 +121,7 @@ class EntityVocabCustom(object):
             vocab_size: int,
             white_list: List[str],
             white_list_only: bool,
+            include_all: bool,
             pool_size: int,
             chunk_size: int,
             language: str,
@@ -154,7 +156,7 @@ class EntityVocabCustom(object):
             for title_link, count in counter.most_common():
                 if title_link in valid_titles and not title_link.startswith("Category:"):
                     title_dict[title_link] = count
-                    if len(title_dict) == vocab_size:
+                    if not include_all and len(title_dict) == vocab_size:
                         break
 
         with open(out_file, "w") as f:

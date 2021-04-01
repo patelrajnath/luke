@@ -47,7 +47,6 @@ def cli():
 def run(common_args, **task_args):
     common_args.update(task_args)
     args = Namespace(**common_args)
-    args.device = 'cpu'
     set_seed(args.seed)
 
     args.experiment.log_parameters({p.name: getattr(args, p.name) for p in run.params})
