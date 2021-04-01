@@ -1,3 +1,4 @@
+import ast
 import itertools
 import math
 import os
@@ -54,7 +55,13 @@ class CoNLLProcessor(object):
         return list(self._create_examples(self._read_data(os.path.join(data_dir, "eng.testb")), "test"))
 
     def get_labels(self, data_dir):
-        return ["NIL", "MISC", "PER", "ORG", "LOC"]
+        labels = ["NIL"]
+        with open(os.path.join(data_dir, 'tags.txt'), encoding='utf8') as f:
+            tags = ast.literal_eval(f.read()).keys()
+            for tag in tags:
+                if len(tag) > 2:
+                    labels.append(tag[2:])
+        return labels
 
     def _read_data(self, input_file):
         data = []
