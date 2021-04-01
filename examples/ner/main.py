@@ -38,7 +38,7 @@ def cli():
 @click.option("--max-seq-length", default=512)
 @click.option("--no-entity-feature", is_flag=True)
 @click.option("--no-word-feature", is_flag=True)
-@click.option("--train-batch-size", default=2)
+@click.option("--train-batch-size", default=32)
 @click.option("--num-train-epochs", default=5.0)
 @click.option("--seed", default=35)
 @click.option("--train-on-dev-set", is_flag=True)
