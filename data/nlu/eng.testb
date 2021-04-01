@@ -1,3 +1,5 @@
+-DOCSTART- -X- -X- O
+
 what O
 is O
 the O
@@ -871,6 +873,8 @@ for O
 next B-date
 week L-date
 
+-DOCSTART- -X- -X- O
+
 tell O
 me O
 the O
@@ -1702,6 +1706,8 @@ start O
 vacuum B-device-type
 bot L-device-type
 
+-DOCSTART- -X- -X- O
+
 start O
 my O
 robot B-device-type
@@ -2506,6 +2512,8 @@ places O
 in O
 benton B-place-name
 ar L-place-name
+
+-DOCSTART- -X- -X- O
 
 tell O
 me O
@@ -3313,6 +3321,8 @@ to O
 rain U-weather-descriptor
 tomorrow U-date
 
+-DOCSTART- -X- -X- O
+
 will O
 i O
 need O
@@ -4021,6 +4031,8 @@ taxi U-transport-type
 book O
 a O
 taxi U-transport-type
+
+-DOCSTART- -X- -X- O
 
 book O
 an O
@@ -4796,6 +4808,8 @@ question O
 please O
 . O
 
+-DOCSTART- -X- -X- O
+
 did O
 you O
 get O
@@ -5557,6 +5571,8 @@ stock O
 price O
 for O
 sprint U-business-name
+
+-DOCSTART- -X- -X- O
 
 what O
 is O
@@ -6341,6 +6357,8 @@ to O
 email O
 john B-person
 smith L-person
+
+-DOCSTART- -X- -X- O
 
 start O
 a O
@@ -7151,6 +7169,8 @@ now O
 on O
 telegraph U-place-name
 
+-DOCSTART- -X- -X- O
+
 what O
 's O
 the O
@@ -7951,6 +7971,8 @@ just O
 said O
 now O
 . O
+
+-DOCSTART- -X- -X- O
 
 can O
 you O

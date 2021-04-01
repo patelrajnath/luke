@@ -1,3 +1,5 @@
+-DOCSTART- -X- -X- O
+
 what O
 is O
 the O
@@ -942,6 +944,8 @@ of O
 one O
 euro U-currency-name
 
+-DOCSTART- -X- -X- O
+
 Show O
 me O
 popular O
@@ -1837,6 +1841,8 @@ john B-person
 birthday U-event-name
 next B-date
 week L-date
+
+-DOCSTART- -X- -X- O
 
 every B-general-frequency
 wednesday L-general-frequency
@@ -2869,6 +2875,8 @@ wedding B-event-name
 anniversary I-event-name
 presents L-event-name
 
+-DOCSTART- -X- -X- O
+
 can O
 you O
 tell O
@@ -3828,6 +3836,8 @@ with I-food-type
 hunan I-food-type
 wok L-food-type
 
+-DOCSTART- -X- -X- O
+
 order O
 one O
 burger U-food-type
@@ -4694,6 +4704,8 @@ food O
 and O
 order O
 
+-DOCSTART- -X- -X- O
+
 noodles U-food-type
 one O
 pack O
@@ -5513,6 +5525,8 @@ do O
 i O
 have O
 
+-DOCSTART- -X- -X- O
+
 when O
 was O
 the O
@@ -6283,6 +6297,8 @@ see O
 my O
 alarms O
 
+-DOCSTART- -X- -X- O
+
 great O
 response O
 to O
@@ -6923,6 +6939,8 @@ it O
 's O
 good O
 . O
+
+-DOCSTART- -X- -X- O
 
 exact O
 . O
@@ -7634,6 +7652,8 @@ my O
 calendar O
 for O
 tomorrow U-date
+
+-DOCSTART- -X- -X- O
 
 where O
 is O
@@ -8469,6 +8489,8 @@ thousand I-date
 and I-date
 seventeen L-date
 
+-DOCSTART- -X- -X- O
+
 from O
 four U-time
 to O
@@ -9292,6 +9314,8 @@ from O
 the O
 calendar O
 
+-DOCSTART- -X- -X- O
+
 remove O
 all O
 the O
@@ -10031,6 +10055,8 @@ all O
 data O
 from O
 calendar O
+
+-DOCSTART- -X- -X- O
 
 cancels O
 lunch U-meal-type
@@ -10950,6 +10976,8 @@ here O
 and O
 the O
 met U-place-name
+
+-DOCSTART- -X- -X- O
 
 how O
 can O
@@ -11934,6 +11962,8 @@ prices O
 for O
 me O
 
+-DOCSTART- -X- -X- O
+
 would O
 you O
 do O
@@ -12787,6 +12817,8 @@ said O
 again O
 . O
 
+-DOCSTART- -X- -X- O
+
 start O
 over O
 . O
@@ -13628,6 +13660,8 @@ brad B-person
 pitt L-person
 married O
 
+-DOCSTART- -X- -X- O
+
 what O
 part O
 of O
@@ -14359,6 +14393,8 @@ is O
 carrie B-person
 underwood L-person
 
+-DOCSTART- -X- -X- O
+
 can O
 cats O
 eat O
@@ -15039,6 +15075,8 @@ to O
 suck O
 up O
 
+-DOCSTART- -X- -X- O
+
 start O
 vacuuming O
 now O
@@ -15671,6 +15709,8 @@ and O
 vacuum O
 the O
 floor U-house-place
+
+-DOCSTART- -X- -X- O
 
 i O
 want O
@@ -16467,6 +16507,8 @@ email O
 for O
 me O
 
+-DOCSTART- -X- -X- O
+
 are O
 there O
 any O
@@ -17241,6 +17283,8 @@ weekend L-date
 
 events O
 today U-date
+
+-DOCSTART- -X- -X- O
 
 which O
 event O
@@ -18057,6 +18101,8 @@ is O
 happening O
 now O
 
+-DOCSTART- -X- -X- O
+
 what O
 is O
 open O
@@ -18801,6 +18847,8 @@ delete O
 this O
 item O
 
+-DOCSTART- -X- -X- O
+
 delete O
 list O
 blank O
@@ -19455,6 +19503,8 @@ list O
 delete O
 my O
 list O
+
+-DOCSTART- -X- -X- O
 
 remove O
 events O
@@ -20172,6 +20222,8 @@ new O
 list O
 for O
 me O
+
+-DOCSTART- -X- -X- O
 
 create O
 a O
@@ -20921,6 +20973,8 @@ selena B-person
 gomez L-person
 concert O
 schedule O
+
+-DOCSTART- -X- -X- O
 
 start O
 a O
@@ -21752,6 +21806,8 @@ go O
 shopping O
 here O
 
+-DOCSTART- -X- -X- O
+
 tell O
 me O
 what O
@@ -22576,6 +22632,8 @@ grocery U-list-name
 list O
 are O
 
+-DOCSTART- -X- -X- O
+
 make O
 a O
 list O
@@ -23334,6 +23392,8 @@ listed O
 in O
 my O
 contacts O
+
+-DOCSTART- -X- -X- O
 
 is O
 there O
@@ -24123,6 +24183,8 @@ kung B-movie-name
 fu I-movie-name
 panda I-movie-name
 three L-movie-name
+
+-DOCSTART- -X- -X- O
 
 when O
 is O
@@ -24996,6 +25058,8 @@ seattle U-place-name
 find O
 train U-transport-type
 ticket O
+
+-DOCSTART- -X- -X- O
 
 can O
 you O
@@ -26024,6 +26088,8 @@ afternoon L-timeofday
 to O
 chicago U-place-name
 
+-DOCSTART- -X- -X- O
+
 book O
 a O
 ticket O
@@ -26797,6 +26863,8 @@ it O
 in O
 denver U-place-name
 
+-DOCSTART- -X- -X- O
+
 what O
 time O
 is O
@@ -27566,6 +27634,8 @@ me O
 the O
 time O
 
+-DOCSTART- -X- -X- O
+
 what O
 is O
 the O
@@ -28238,6 +28308,8 @@ describe O
 the O
 internet U-definition-word
 
+-DOCSTART- -X- -X- O
+
 give O
 me O
 a O
@@ -28828,6 +28900,8 @@ what O
 a O
 workhouse U-definition-word
 is O
+
+-DOCSTART- -X- -X- O
 
 what O
 is O
@@ -29611,6 +29685,8 @@ weather O
 in O
 utah U-place-name
 
+-DOCSTART- -X- -X- O
+
 what O
 's O
 the O
@@ -30341,6 +30417,8 @@ please O
 stop O
 speaking O
 
+-DOCSTART- -X- -X- O
+
 mute O
 volume O
 
@@ -30879,6 +30957,8 @@ the O
 speakers O
 
 goodnight O
+
+-DOCSTART- -X- -X- O
 
 it O
 's O
@@ -31644,6 +31724,8 @@ for O
 me O
 . O
 
+-DOCSTART- -X- -X- O
+
 does O
 n't O
 really O
@@ -32431,6 +32513,8 @@ whatever O
 , O
 olly O
 . O
+
+-DOCSTART- -X- -X- O
 
 please O
 add O
@@ -33252,6 +33336,8 @@ tomorrow B-date
 's L-date
 alarm O
 
+-DOCSTART- -X- -X- O
+
 set O
 the O
 alarm O
@@ -33932,6 +34018,8 @@ the O
 lights O
 to O
 medium O
+
+-DOCSTART- -X- -X- O
 
 shut O
 the O
@@ -34626,6 +34714,8 @@ office U-house-place
 lights O
 off O
 
+-DOCSTART- -X- -X- O
+
 shut O
 off O
 the O
@@ -35285,6 +35375,8 @@ reduce O
 the O
 brightness O
 
+-DOCSTART- -X- -X- O
+
 lower O
 lights O
 in O
@@ -35942,6 +36034,8 @@ taxi U-transport-type
 a O
 nine B-time
 am L-time
+
+-DOCSTART- -X- -X- O
 
 book O
 an O
@@ -36766,6 +36860,8 @@ as O
 soon O
 as O
 possible O
+
+-DOCSTART- -X- -X- O
 
 send O
 an O
@@ -37694,6 +37790,8 @@ the O
 right O
 response O
 . O
+
+-DOCSTART- -X- -X- O
 
 uh O
 no O
@@ -38659,6 +38757,8 @@ all O
 wrong O
 . O
 
+-DOCSTART- -X- -X- O
+
 sorry O
 but O
 i O
@@ -39344,6 +39444,8 @@ volume O
 on O
 my O
 speakers O
+
+-DOCSTART- -X- -X- O
 
 raise O
 the O
@@ -40065,6 +40167,8 @@ in O
 my O
 contacts O
 list O
+
+-DOCSTART- -X- -X- O
 
 what O
 is O
@@ -40854,6 +40958,8 @@ charles U-person
 telephone B-personal-info
 number L-personal-info
 
+-DOCSTART- -X- -X- O
+
 rahul U-person
 contact U-personal-info
 
@@ -41493,6 +41599,8 @@ the O
 satellite O
 music O
 feed O
+
+-DOCSTART- -X- -X- O
 
 play O
 anything O
@@ -42195,6 +42303,8 @@ hear O
 sleeptime B-playlist-name
 playlist L-playlist-name
 next O
+
+-DOCSTART- -X- -X- O
 
 play O
 some O
@@ -42964,6 +43074,8 @@ said O
 please O
 . O
 
+-DOCSTART- -X- -X- O
+
 please O
 check O
 and O
@@ -43853,6 +43965,8 @@ thing O
 i O
 said O
 . O
+
+-DOCSTART- -X- -X- O
 
 can O
 you O
@@ -44599,6 +44713,8 @@ the O
 coffee B-device-type
 machine L-device-type
 
+-DOCSTART- -X- -X- O
+
 make O
 me O
 a O
@@ -45291,6 +45407,8 @@ the O
 coffee B-device-type
 maker L-device-type
 accordingly O
+
+-DOCSTART- -X- -X- O
 
 can O
 i O
@@ -46026,6 +46144,8 @@ lime U-ingredient
 without O
 a O
 zester O
+
+-DOCSTART- -X- -X- O
 
 good O
 food O
@@ -46825,6 +46945,8 @@ the O
 world O
 today U-date
 
+-DOCSTART- -X- -X- O
+
 how O
 are O
 things O
@@ -47582,6 +47704,8 @@ politics U-news-topic
 celeb O
 news O
 
+-DOCSTART- -X- -X- O
+
 what O
 's O
 the O
@@ -48276,6 +48400,8 @@ little O
 brighter O
 thanks O
 
+-DOCSTART- -X- -X- O
+
 i O
 need O
 the O
@@ -48946,6 +49072,8 @@ percent O
 off O
 forty O
 dollars O
+
+-DOCSTART- -X- -X- O
 
 what O
 is O
@@ -49792,6 +49920,8 @@ let O
 do O
 math O
 
+-DOCSTART- -X- -X- O
+
 tell O
 me O
 the O
@@ -50632,6 +50762,8 @@ price O
 of O
 apple U-business-name
 
+-DOCSTART- -X- -X- O
+
 what O
 are O
 the O
@@ -51447,6 +51579,8 @@ pizza U-food-type
 have O
 takeaway U-order-type
 
+-DOCSTART- -X- -X- O
+
 can O
 i O
 get O
@@ -52246,6 +52380,8 @@ panera B-business-name
 bread L-business-name
 restaurant U-business-type
 
+-DOCSTART- -X- -X- O
+
 does O
 that O
 restaurant U-business-type
@@ -52965,6 +53101,8 @@ fmod U-game-name
 lets O
 play O
 
+-DOCSTART- -X- -X- O
+
 please O
 begin O
 clash B-game-name
@@ -53634,6 +53772,8 @@ candy B-game-name
 crush L-game-name
 with O
 me O
+
+-DOCSTART- -X- -X- O
 
 i O
 want O
@@ -54359,6 +54499,8 @@ music O
 to O
 my O
 favorites O
+
+-DOCSTART- -X- -X- O
 
 can O
 save O
@@ -55125,6 +55267,8 @@ top O
 forty O
 music O
 
+-DOCSTART- -X- -X- O
+
 nice O
 lyrics O
 
@@ -55842,6 +55986,8 @@ shut O
 off O
 please O
 . O
+
+-DOCSTART- -X- -X- O
 
 just O
 stop O
@@ -56602,6 +56748,8 @@ weather O
 for O
 the O
 week O
+
+-DOCSTART- -X- -X- O
 
 send O
 a O
@@ -57554,6 +57702,8 @@ i O
 'm O
 on O
 leave O
+
+-DOCSTART- -X- -X- O
 
 send O
 an O
@@ -58532,6 +58682,8 @@ topic O
 narendra O
 modi O
 
+-DOCSTART- -X- -X- O
+
 tell O
 me O
 what O
@@ -59317,6 +59469,8 @@ in O
 my O
 social O
 media O
+
+-DOCSTART- -X- -X- O
 
 myspace U-media-type
 
@@ -60147,6 +60301,8 @@ playing O
 right O
 now O
 
+-DOCSTART- -X- -X- O
+
 what O
 's O
 that O
@@ -60951,6 +61107,8 @@ album O
 of O
 songs O
 
+-DOCSTART- -X- -X- O
+
 please O
 add O
 this O
@@ -61652,6 +61810,8 @@ color O
 for O
 the O
 lights O
+
+-DOCSTART- -X- -X- O
 
 light O
 settings O
@@ -62414,6 +62574,8 @@ lights O
 blue U-color-type
 in O
 here U-house-place
+
+-DOCSTART- -X- -X- O
 
 adjust O
 the O
@@ -63178,6 +63340,8 @@ tomorrow U-date
 at O
 two B-time
 pm L-time
+
+-DOCSTART- -X- -X- O
 
 wake O
 me O
@@ -63995,6 +64159,8 @@ started I-event-name
 to I-event-name
 play L-event-name
 
+-DOCSTART- -X- -X- O
+
 set O
 a O
 wake O
@@ -64772,6 +64938,8 @@ traffic O
 at O
 new B-place-name
 york L-place-name
+
+-DOCSTART- -X- -X- O
 
 how O
 is O
@@ -65596,6 +65764,8 @@ country U-music-genre
 music O
 station O
 
+-DOCSTART- -X- -X- O
+
 start O
 my O
 playlist O
@@ -66330,6 +66500,8 @@ turn O
 on O
 pdr B-radio-name
 am L-radio-name
+
+-DOCSTART- -X- -X- O
 
 i O
 'd O
@@ -67148,6 +67320,8 @@ a O
 complaint O
 to O
 comcast U-business-name
+
+-DOCSTART- -X- -X- O
 
 tweet U-media-type
 kohls U-business-name
@@ -68083,6 +68257,8 @@ happy O
 to O
 facebook U-media-type
 
+-DOCSTART- -X- -X- O
+
 put O
 this O
 on O
@@ -68871,6 +69047,8 @@ current O
 audio B-media-type
 book L-media-type
 
+-DOCSTART- -X- -X- O
+
 pause U-player-setting
 the O
 book O
@@ -69555,6 +69733,8 @@ audiobook U-media-type
 for O
 me O
 
+-DOCSTART- -X- -X- O
+
 resume B-player-setting
 playing L-player-setting
 you B-audiobook-name
@@ -70199,6 +70379,8 @@ appreciated O
 , O
 olly O
 . O
+
+-DOCSTART- -X- -X- O
 
 you O
 've O
@@ -71055,6 +71237,8 @@ the O
 answer O
 . O
 
+-DOCSTART- -X- -X- O
+
 that O
 was O
 cool O
@@ -71972,6 +72156,8 @@ your O
 answers O
 further O
 . O
+
+-DOCSTART- -X- -X- O
 
 i O
 ca O
@@ -72983,6 +73169,8 @@ response O
 please O
 . O
 
+-DOCSTART- -X- -X- O
+
 s2 O
 , O
 i O
@@ -73740,6 +73928,8 @@ next O
 one O
 please O
 
+-DOCSTART- -X- -X- O
+
 play O
 most O
 recent O
@@ -74429,6 +74619,8 @@ the O
 next B-podcast-descriptor
 podcast L-podcast-descriptor
 available O
+
+-DOCSTART- -X- -X- O
 
 start O
 playing O
@@ -75462,6 +75654,8 @@ joke O
 you O
 know O
 
+-DOCSTART- -X- -X- O
+
 say O
 some O
 jokes O
@@ -76112,6 +76306,8 @@ off O
 the O
 plug B-device-type
 socket L-device-type
+
+-DOCSTART- -X- -X- O
 
 please O
 make O
@@ -76799,6 +76995,8 @@ enjoyed O
 sunny O
 day O
 today U-date
+
+-DOCSTART- -X- -X- O
 
 when O
 i O
@@ -77547,6 +77745,8 @@ you O
 human O
 
 bingo O
+
+-DOCSTART- -X- -X- O
 
 do O
 homework O
