@@ -60,7 +60,7 @@ def run(common_args, **task_args):
     results = {}
 
     if args.do_train:
-        model = LukeForNamedEntityRecognition(args, len(processor.get_labels()))
+        model = LukeForNamedEntityRecognition(args, len(processor.get_labels(args.data_dir)))
         model.load_state_dict(args.model_weights, strict=False)
         model.to(args.device)
 
@@ -81,7 +81,7 @@ def run(common_args, **task_args):
     torch.cuda.empty_cache()
 
     if args.do_eval:
-        model = LukeForNamedEntityRecognition(args, len(processor.get_labels()))
+        model = LukeForNamedEntityRecognition(args, len(processor.get_labels(args.data_dir)))
         if args.checkpoint_file:
             model.load_state_dict(torch.load(args.checkpoint_file, map_location="cpu"))
         else:
@@ -103,7 +103,7 @@ def run(common_args, **task_args):
 
 def evaluate(args, model, fold, output_file=None):
     dataloader, examples, features, processor = load_examples(args, fold)
-    label_list = processor.get_labels()
+    label_list = processor.get_labels(args.data_dir)
     all_predictions = defaultdict(dict)
 
     for batch in tqdm(dataloader, desc="Eval"):
@@ -179,7 +179,7 @@ def load_examples(args, fold):
     if fold == "train" and args.train_on_dev_set:
         examples += processor.get_dev_examples(args.data_dir)
 
-    label_list = processor.get_labels()
+    label_list = processor.get_labels(args.data_dir)
 
     logger.info("Creating features from the dataset...")
     features = convert_examples_to_features(

@@ -53,7 +53,7 @@ class CoNLLProcessor(object):
     def get_test_examples(self, data_dir):
         return list(self._create_examples(self._read_data(os.path.join(data_dir, "eng.testb")), "test"))
 
-    def get_labels(self):
+    def get_labels(self, data_dir):
         return ["NIL", "MISC", "PER", "ORG", "LOC"]
 
     def _read_data(self, input_file):
