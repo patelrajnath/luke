@@ -61,7 +61,7 @@ class CoNLLProcessor(object):
             for tag in tags:
                 if len(tag) > 2:
                     labels.append(tag[2:])
-        return labels
+        return list(set(labels))
 
     def _read_data(self, input_file):
         data = []
