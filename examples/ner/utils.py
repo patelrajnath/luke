@@ -60,6 +60,7 @@ class CoNLLProcessor(object):
             tags = ast.literal_eval(f.read()).keys()
             for tag in tags:
                 if len(tag) > 2:
+                    tag = tag.replace('_', '-')
                     labels.append(tag[2:])
         return list(set(labels))
 
