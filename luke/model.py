@@ -182,7 +182,7 @@ class LukeModel(nn.Module):
     def _compute_extended_attention_mask(
         self, word_attention_mask: torch.LongTensor,
             entity_attention_mask: torch.LongTensor,
-            vm: torch.LongTensor):
+            vm: torch.LongTensor = None):
         if vm is None:
             attention_mask = word_attention_mask
             if entity_attention_mask is not None:
