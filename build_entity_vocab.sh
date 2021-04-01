@@ -1,3 +1,4 @@
 python luke/cli.py build-entity-vocab \
 	wiki/wiki_vocab \
-	wiki/wiki_vocab_entity
+	wiki/wiki_vocab_entity \
+	--vocab-size 500000

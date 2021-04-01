@@ -1,6 +1,6 @@
 python luke/cli.py pretrain wiki/ model/ \
-	--batch-size 16 \
-	--gradient-accumulation-steps 1 \
-	--bert-model-name xlm-roberta-base \
-	--fp16 
+	--batch-size 8 \
+	--gradient-accumulation-steps 8 \
+	--bert-model-name roberta-large \
+	--fp16
 
