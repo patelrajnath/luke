@@ -16,19 +16,19 @@ class InputExample(object):
 
 class InputFeatures(object):
     def __init__(
-        self,
-        example_index,
-        word_ids,
-        word_segment_ids,
-        word_attention_mask,
-        entity_start_positions,
-        entity_end_positions,
-        entity_ids,
-        entity_position_ids,
-        entity_segment_ids,
-        entity_attention_mask,
-        original_entity_spans,
-        labels,
+            self,
+            example_index,
+            word_ids,
+            word_segment_ids,
+            word_attention_mask,
+            entity_start_positions,
+            entity_end_positions,
+            entity_ids,
+            entity_position_ids,
+            entity_segment_ids,
+            entity_attention_mask,
+            original_entity_spans,
+            labels,
     ):
         self.example_index = example_index
         self.word_ids = word_ids
@@ -61,8 +61,10 @@ class CoNLLProcessor(object):
             for tag in tags:
                 if len(tag) > 2:
                     tag = tag.replace('_', '-')
-                    labels.append(tag[2:])
-        return list(set(labels))
+                    label = tag[2:]
+                    if label not in labels:
+                        labels.append(label)
+        return labels
 
     def _read_data(self, input_file):
         data = []
@@ -100,7 +102,7 @@ class CoNLLProcessor(object):
 
 
 def convert_examples_to_features(
-    examples, label_list, tokenizer, max_seq_length, max_entity_length, max_mention_length
+        examples, label_list, tokenizer, max_seq_length, max_entity_length, max_mention_length
 ):
     max_num_subwords = max_seq_length - 2
     label_map = {label: i for i, label in enumerate(label_list)}
@@ -108,9 +110,9 @@ def convert_examples_to_features(
 
     def tokenize_word(text):
         if (
-            isinstance(tokenizer, RobertaTokenizer)
-            and (text[0] != "'")
-            and (len(text) != 1 or not is_punctuation(text))
+                isinstance(tokenizer, RobertaTokenizer)
+                and (text[0] != "'")
+                and (len(text) != 1 or not is_punctuation(text))
         ):
             return tokenizer.tokenize(text, add_prefix_space=True)
         return tokenizer.tokenize(text)
@@ -153,7 +155,7 @@ def convert_examples_to_features(
             entity_labels[(token2subword[start], len(subwords))] = label_map[cur_type]
 
         for n in range(len(subword_sentence_boundaries) - 1):
-            doc_sent_start, doc_sent_end = subword_sentence_boundaries[n : n + 2]
+            doc_sent_start, doc_sent_end = subword_sentence_boundaries[n: n + 2]
 
             left_length = doc_sent_start
             right_length = len(subwords) - doc_sent_end
@@ -168,7 +170,7 @@ def convert_examples_to_features(
                 left_context_length = min(left_length, max_num_subwords - right_context_length - sentence_length)
 
             doc_offset = doc_sent_start - left_context_length
-            target_tokens = subwords[doc_offset : doc_sent_end + right_context_length]
+            target_tokens = subwords[doc_offset: doc_sent_end + right_context_length]
 
             word_ids = tokenizer.convert_tokens_to_ids([tokenizer.cls_token] + target_tokens + [tokenizer.sep_token])
             word_attention_mask = [1] * (len(target_tokens) + 2)
