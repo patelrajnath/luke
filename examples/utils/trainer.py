@@ -8,6 +8,8 @@ import torch
 from tqdm import tqdm
 from transformers import WEIGHTS_NAME, AdamW, get_constant_schedule_with_warmup, get_linear_schedule_with_warmup
 
+from examples.ner.model_utils import evaluate
+
 logger = logging.getLogger(__name__)
 
 
@@ -46,6 +48,7 @@ class Trainer(object):
         self.scheduler = self._create_scheduler(self.optimizer)
 
     def train(self):
+        results = {}
         model = self.model
         optimizer = self.optimizer
 
@@ -127,7 +130,13 @@ class Trainer(object):
                             and self.args.save_steps > 0
                             and global_step % self.args.save_steps == 0
                         ):
+                            # TODO: add evaluation code here
+                            dev_output_file = os.path.join(self.args.output_dir, "dev_predictions.txt")
+                            results.update({f"dev_{k}": v for k, v in evaluate(self.args, model, "dev", dev_output_file).items()})
+                            logger.info(results)
+
                             output_dir = os.path.join(self.args.output_dir, "checkpoint-{}".format(global_step))
+                            os.makedirs(output_dir)
 
                             if hasattr(model, "module"):
                                 torch.save(model.module.state_dict(), os.path.join(output_dir, WEIGHTS_NAME))

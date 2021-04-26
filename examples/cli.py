@@ -38,6 +38,7 @@ logger = logging.getLogger(__name__)
 @click.option("--master-port", default=29500)
 @click.option("--local-rank", "--local_rank", default=-1)
 @click.option("--model-file", type=click.Path(exists=True))
+@click.option("--log-file", default='app.log')
 @commet_logger_args
 @click.pass_context
 def cli(ctx, **kwargs):
@@ -69,9 +70,11 @@ def cli(ctx, **kwargs):
         sys.exit(0)
     else:
         if args.local_rank not in (-1, 0):
-            logging.basicConfig(format=LOG_FORMAT, level=logging.WARNING)
+            logging.basicConfig(filename=args.log_file,
+                                filemode='w', format=LOG_FORMAT, level=logging.WARNING)
         else:
-            logging.basicConfig(format=LOG_FORMAT, level=logging.INFO)
+            logging.basicConfig(filename=args.log_file,
+                                filemode='w', format=LOG_FORMAT, level=logging.INFO)
 
         if not os.path.exists(args.output_dir) and args.local_rank in [-1, 0]:
             os.makedirs(args.output_dir)
