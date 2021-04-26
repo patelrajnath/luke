@@ -83,14 +83,16 @@ def load_examples(args, fold, eval_with_loss=False):
 def compute_loss(args, model, fold):
     dataloader, examples, features, processor = load_examples(args, fold, eval_with_loss=True)
     total_loss = 0.0
+    steps = 0
     for batch in tqdm(dataloader, desc="Eval"):
+        steps += 1
         model.eval()
         inputs_with_labels = {k: v.to(args.device) for k, v in batch.items()}
         with torch.no_grad():
             output = model(**inputs_with_labels)
             loss = output[0]
         total_loss += loss.item()
-    return total_loss
+    return total_loss / steps
 
 
 def evaluate(args, model, fold, output_file=None):
