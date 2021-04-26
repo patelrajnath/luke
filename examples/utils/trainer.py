@@ -8,7 +8,7 @@ import torch
 from tqdm import tqdm
 from transformers import WEIGHTS_NAME, AdamW, get_constant_schedule_with_warmup, get_linear_schedule_with_warmup
 
-from examples.ner.model_utils import evaluate
+from examples.ner.utils_model import evaluate
 
 logger = logging.getLogger(__name__)
 
@@ -29,6 +29,7 @@ def trainer_args(func):
     @click.option("--fp16-min-loss-scale", default=1)
     @click.option("--fp16-max-loss-scale", default=4)
     @click.option("--save-steps", default=0)
+    @click.option("--eval-steps", default=0)
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
         return func(*args, **kwargs)
@@ -124,17 +125,20 @@ class Trainer(object):
                         if self.step_callback is not None:
                             self.step_callback(model, global_step)
 
+                        if (self.args.eval_steps > 0 and
+                                global_step % self.args.eval_steps == 0):
+                            # TODO: add evaluation code here
+                            dev_output_file = os.path.join(self.args.output_dir, "dev_predictions.txt")
+                            results.update(
+                                {f"dev_{k}": v for k, v in evaluate(self.args, model, "dev", dev_output_file).items()})
+                            logger.info(results)
+
                         if (
                             self.args.local_rank in (-1, 0)
                             and self.args.output_dir
                             and self.args.save_steps > 0
                             and global_step % self.args.save_steps == 0
                         ):
-                            # TODO: add evaluation code here
-                            dev_output_file = os.path.join(self.args.output_dir, "dev_predictions.txt")
-                            results.update({f"dev_{k}": v for k, v in evaluate(self.args, model, "dev", dev_output_file).items()})
-                            logger.info(results)
-
                             output_dir = os.path.join(self.args.output_dir, "checkpoint-{}".format(global_step))
                             os.makedirs(output_dir)
 
