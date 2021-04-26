@@ -99,17 +99,12 @@ def evaluate(args, model, fold, output_file=None):
     dataloader, examples, features, processor = load_examples(args, fold)
     label_list = processor.get_labels(args.data_dir)
     all_predictions = defaultdict(dict)
-    total_loss = 0.0
 
     for batch in tqdm(dataloader, desc="Eval"):
         model.eval()
-        # inputs_with_labels = {k: v.to(args.device) for k, v in batch.items()}
         inputs = {k: v.to(args.device) for k, v in batch.items() if k != "feature_indices"}
         with torch.no_grad():
             logits = model(**inputs)
-            # output = model(**inputs_with_labels)
-            # loss = output[0]
-        # total_loss += loss.item()
 
         for i, feature_index in enumerate(batch["feature_indices"]):
             feature = features[feature_index.item()]
@@ -163,5 +158,4 @@ def evaluate(args, model, fold, output_file=None):
         f1_span=f1_score_span(final_labels, final_predictions),
         precision_span=precision_score_span(final_labels, final_predictions),
         recall_span=recall_score_span(final_labels, final_predictions),
-        total_loss=total_loss,
     )
