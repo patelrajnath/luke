@@ -8,7 +8,7 @@ import torch
 from transformers import WEIGHTS_NAME
 
 from luke.utils.entity_vocab import MASK_TOKEN
-from .model_utils import load_examples, evaluate
+from .utils_model import load_examples, evaluate
 
 from ..utils import set_seed
 from ..utils.trainer import Trainer, trainer_args
