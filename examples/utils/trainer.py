@@ -8,7 +8,7 @@ import torch
 from tqdm import tqdm
 from transformers import WEIGHTS_NAME, AdamW, get_constant_schedule_with_warmup, get_linear_schedule_with_warmup
 
-from examples.ner.utils_model import evaluate
+from examples.ner.utils_model import evaluate, compute_loss
 
 logger = logging.getLogger(__name__)
 
@@ -128,6 +128,9 @@ class Trainer(object):
                         if (self.args.eval_steps > 0 and
                                 global_step % self.args.eval_steps == 0):
                             # TODO: add evaluation code here
+                            validation_loss = compute_loss(self.args, model, "dev")
+                            logger.info(f'Validation loss:{validation_loss}')
+
                             dev_output_file = os.path.join(self.args.output_dir, "dev_predictions.txt")
                             results.update(
                                 {f"dev_{k}": v for k, v in evaluate(self.args, model, "dev", dev_output_file).items()})

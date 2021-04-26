@@ -11,7 +11,7 @@ from examples.ner.utils import convert_examples_to_features, CoNLLProcessor
 from luke.model import logger
 
 
-def load_examples(args, fold):
+def load_examples(args, fold, eval_with_loss=False):
     if args.local_rank not in (-1, 0) and fold == "train":
         torch.distributed.barrier()
 
@@ -59,7 +59,7 @@ def load_examples(args, fold):
             ret["entity_ids"].fill_(0)
             ret["entity_attention_mask"].fill_(0)
 
-        if fold == "train":
+        if fold == "train" or eval_with_loss:
             ret["labels"] = create_padded_sequence("labels", -1)
         else:
             ret["feature_indices"] = torch.tensor([o[0] for o in batch], dtype=torch.long)
@@ -80,6 +80,19 @@ def load_examples(args, fold):
     return dataloader, examples, features, processor
 
 
+def compute_loss(args, model, fold):
+    dataloader, examples, features, processor = load_examples(args, fold, eval_with_loss=True)
+    total_loss = 0.0
+    for batch in tqdm(dataloader, desc="Eval"):
+        model.eval()
+        inputs_with_labels = {k: v.to(args.device) for k, v in batch.items()}
+        with torch.no_grad():
+            output = model(**inputs_with_labels)
+            loss = output[0]
+        total_loss += loss.item()
+    return total_loss
+
+
 def evaluate(args, model, fold, output_file=None):
     dataloader, examples, features, processor = load_examples(args, fold)
     label_list = processor.get_labels(args.data_dir)
@@ -88,12 +101,13 @@ def evaluate(args, model, fold, output_file=None):
 
     for batch in tqdm(dataloader, desc="Eval"):
         model.eval()
-        inputs_with_labels = {k: v.to(args.device) for k, v in batch.items()}
+        # inputs_with_labels = {k: v.to(args.device) for k, v in batch.items()}
         inputs = {k: v.to(args.device) for k, v in batch.items() if k != "feature_indices"}
         with torch.no_grad():
             logits = model(**inputs)
-            loss = model(**inputs_with_labels)
-        total_loss += loss.item()
+            # output = model(**inputs_with_labels)
+            # loss = output[0]
+        # total_loss += loss.item()
 
         for i, feature_index in enumerate(batch["feature_indices"]):
             feature = features[feature_index.item()]
