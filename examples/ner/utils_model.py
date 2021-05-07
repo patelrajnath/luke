@@ -143,7 +143,7 @@ def evaluate(args, model, fold, output_file=None):
 
     if output_file:
         all_words = [w for e in examples for w in e.words]
-        with open(output_file, "w") as f:
+        with open(output_file, "w", encoding='utf8') as f:
             for item in zip(all_words, final_labels, final_predictions):
                 f.write(" ".join(item) + "\n")
 

@@ -71,7 +71,7 @@ class CoNLLProcessor(object):
         words = []
         labels = []
         sentence_boundaries = []
-        with open(input_file) as f:
+        with open(input_file, encoding='utf8') as f:
             for line in f:
                 line = line.rstrip()
                 if line.startswith("-DOCSTART"):
